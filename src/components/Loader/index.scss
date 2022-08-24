@@ -1,0 +1,28 @@
+.audio-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100% !important;
+  width: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  svg {
+    position: absolute;
+    top: calc(50% - 80px);
+    left: calc(50% - 80px);
+  }
+}
+
+.audio-loading[data-dark="true"] {
+  background-color: var(--color-bg-900);
+  svg {
+    fill: var(--color-bg-100);
+  }
+}
+.audio-loading[data-dark="false"] {
+  background-color: var(--color-bg-100);
+  svg {
+    fill: var(--color-bg-900);
+  }
+}

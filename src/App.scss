@@ -1,0 +1,57 @@
+:root {
+  --color-bg-100: hsl(0, 0%, 98%);
+  --color-bg-900: hsl(207, 26%, 17%);
+  --color-element-100: hsl(0, 0%, 100%);
+  --color-element-900: hsl(209, 23%, 22%);
+  --color-text-900: hsl(200, 15%, 8%);
+  --color-text-100: hsl(0, 0%, 100%);
+
+  --fw-300: 300;
+  --fw-600: 600;
+  --fw-800: 800;
+}
+
+.primary-heading {
+  font-weight: var(--fw-800);
+  font-size: 2.3rem;
+}
+
+.secondary-heading {
+  font-weight: var(--fw-600);
+  font-size: 1.8rem;
+}
+
+.ternary-heading {
+  font-weight: var(--fw-600);
+  font-size: 1.5rem;
+}
+
+.primary-text {
+  font-weight: var(--fw-300);
+  font-size: 1rem;
+}
+
+.primary-text[data-dark="true"],
+.primary-heading[data-dark="true"],
+.secondary-heading[data-dark="true"],
+.ternary-heading[data-dark="true"] {
+  color: var(--color-text-100);
+}
+.primary-text[data-dark="false"],
+.primary-heading[data-dark="false"],
+.secondary-heading[data-dark="false"],
+.ternary-heading[data-dark="false"] {
+  color: var(--color-text-900) !important;
+}
+
+.light-bg[data-dark="false"] {
+  background-color: var(--color-bg-100);
+}
+.light-bg[data-dark="true"] {
+  background-color: var(--color-bg-900);
+}
+
+.container {
+  width: min(90%, 1400px);
+  margin: auto;
+}

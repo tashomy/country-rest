@@ -1,0 +1,30 @@
+.card-wrap {
+  margin-top: 2rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+  min-height: 40vh;
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 7px rgba(128, 128, 128, 0.504);
+    .data {
+      padding: 1rem;
+    }
+    .bold {
+      font-weight: var(--fw-600);
+    }
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 900px) {
+  .card-container {
+    grid-column: 1 / 5;
+  }
+}
