@@ -16,7 +16,7 @@ export const fetchSearch = async (name) => {
     return data;
   } catch (error) {
     console.log(error);
-    return error;
+    return "no";
   }
 };
 export const fetchContinents = async (name) => {

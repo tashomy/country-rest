@@ -20,6 +20,11 @@ const Home = () => {
     fetchAllCountries().then((data) => {
       setCurrCountries(data.data);
       setLoading(false);
+      if (mode.darkMode === true) {
+        document.querySelector(".react-paginate").classList.add("dark");
+      } else {
+        document.querySelector(".react-paginate").classList.remove("dark");
+      }
     });
   }, []);
 
@@ -33,6 +38,11 @@ const Home = () => {
       return;
     }
     fetchSearch(e.target.value).then((data) => {
+      if (data === "no") {
+        setCurrCountries(data);
+        setLoading(false);
+        return;
+      }
       setCurrCountries(data.data);
       setLoading(false);
     });
@@ -52,6 +62,43 @@ const Home = () => {
       });
     }
   };
+
+  if (currCountries === "no") {
+    return (
+      <div className="hero light-bg" data-dark={`${mode.darkMode}`}>
+        <div className="container">
+          <div className="search-filter">
+            <section className="search-bar">
+              <button>
+                <AiOutlineSearch />
+              </button>
+              <input
+                type="text"
+                placeholder="Search for a country"
+                onChange={handleSearch}
+              />
+            </section>
+            <select name="region" id="region" onChange={handleContinents}>
+              <option value="all">All continents</option>
+              <option value="africa">Africa</option>
+              <option value="america">America</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europe</option>
+              <option value="oceania">Oceania</option>
+            </select>
+          </div>
+          <div className="card-wrap">
+            <h1
+              className="primary-heading error-search"
+              data-dark={`${mode.darkMode}`}
+            >
+              Not found
+            </h1>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="hero light-bg" data-dark={`${mode.darkMode}`}>

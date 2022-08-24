@@ -51,3 +51,20 @@
     }
   }
 }
+
+.error-search {
+  text-align: center;
+  grid-column: 2/4;
+  margin-top: 3rem;
+}
+
+@media (max-width: 600px) {
+  .search-filter {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    select {
+      margin-top: 2rem;
+    }
+  }
+}

@@ -3,7 +3,6 @@ import "./index.scss";
 import { useSelector } from "react-redux/es/exports";
 import ReactPaginate from "react-paginate";
 import Card from "../Card";
-import Loader from "../Loader";
 
 export const Items = (props) => {
   return (
