@@ -10,7 +10,6 @@ const CountryDetails = () => {
   const country = useParams();
   const mode = useSelector((state) => state.mode);
   const [currCountry, setCurrCountry] = useState([]);
-  console.log(country);
 
   useEffect(() => {
     fetchFullName(country.countryId).then((data) => {

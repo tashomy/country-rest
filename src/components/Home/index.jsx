@@ -15,7 +15,12 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [currCountries, setCurrCountries] = useState([]);
 
+  // greska je to sto ako ukucam sf brzo on ce prvo da zavrsi upit za sf
+  //taj upit jeste not found ali ce iz nekog razloga tek nakon toga da
+  //odradi upit za samo s i taj ce da ima rezultat i onda ono
+  //not found za sf ponistava to s
   useEffect(() => {
+    if (currCountries === "no") return;
     setLoading(true);
     fetchAllCountries().then((data) => {
       setCurrCountries(data.data);
@@ -34,6 +39,7 @@ const Home = () => {
       fetchAllCountries().then((data) => {
         setCurrCountries(data.data);
         setLoading(false);
+        console.log("all");
       });
       return;
     }
@@ -41,9 +47,11 @@ const Home = () => {
       if (data === "no") {
         setCurrCountries(data);
         setLoading(false);
+        console.log("not found");
         return;
       }
       setCurrCountries(data.data);
+      console.log("found");
       setLoading(false);
     });
   };

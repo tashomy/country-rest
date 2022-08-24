@@ -17,7 +17,6 @@ export const Items = (props) => {
               population={item.population}
               capital={item.capital ? item.capital[0] : ""}
               region={item.region}
-              id={item.idd.suffixes[0]}
             />
           );
         })}
