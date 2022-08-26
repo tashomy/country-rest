@@ -50,7 +50,7 @@ const Paginate = ({ countries, itemsPerPage }) => {
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
-
+    window.scrollTo(0, 0);
     setItemOffset(newOffset);
   };
 
