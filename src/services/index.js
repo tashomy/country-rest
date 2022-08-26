@@ -38,3 +38,12 @@ export const fetchFullName = async (name) => {
     return error;
   }
 };
+export const fetchMultipleCodes = async (codes) => {
+  try {
+    const data = await api.fetchMultipleCodes(codes);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+};

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { useParams } from "react-router";
-import { fetchFullName } from "../../services";
+import { fetchFullName, fetchMultipleCodes } from "../../services";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../Loader";
@@ -10,12 +10,23 @@ const CountryDetails = () => {
   const country = useParams();
   const mode = useSelector((state) => state.mode);
   const [currCountry, setCurrCountry] = useState([]);
+  const [borderShare, setBorderShare] = useState([]);
 
   useEffect(() => {
     fetchFullName(country.countryId).then((data) => {
       setCurrCountry(data.data);
     });
   }, []);
+
+  useEffect(() => {
+    if (currCountry.length !== 0) {
+      let codes = currCountry[0].borders;
+
+      fetchMultipleCodes(codes).then((data) => {
+        setBorderShare(data.data);
+      });
+    }
+  }, [currCountry]);
 
   if (currCountry.length !== 0) {
     return (
@@ -162,13 +173,13 @@ const CountryDetails = () => {
               </span>
 
               {currCountry[0].borders
-                ? currCountry[0].borders.map((border) => {
+                ? borderShare.map((border) => {
                     return (
                       <span
                         className="primary-text details-border"
                         data-dark={`${mode.darkMode}`}
                       >
-                        {border} &nbsp;
+                        {border.name.common} &nbsp;
                       </span>
                     );
                   })
