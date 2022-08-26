@@ -9,8 +9,8 @@
 
   svg {
     position: absolute;
-    top: calc(50% - 80px);
-    left: calc(50% - 80px);
+    top: calc(30% - 40px);
+    left: calc(50% - 40px);
   }
 }
 
@@ -24,5 +24,14 @@
   background-color: var(--color-bg-100);
   svg {
     fill: var(--color-bg-900);
+  }
+}
+
+@media (max-width: 900px) {
+  .audio-loading {
+    svg {
+      top: 20px;
+      left: calc(50% - 40px);
+    }
   }
 }

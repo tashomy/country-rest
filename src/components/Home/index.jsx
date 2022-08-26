@@ -21,13 +21,25 @@ const Home = () => {
     fetchAllCountries().then((data) => {
       setCurrCountries(data.data);
       setLoading(false);
+      if (document.querySelector(".react-paginate")) {
+        if (mode.darkMode === true) {
+          document.querySelector(".react-paginate").classList.add("dark");
+        } else {
+          document.querySelector(".react-paginate").classList.remove("dark");
+        }
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
       if (mode.darkMode === true) {
         document.querySelector(".react-paginate").classList.add("dark");
       } else {
         document.querySelector(".react-paginate").classList.remove("dark");
       }
-    });
-  }, []);
+    }, 500);
+  }, [currCountries, mode.darkMode]);
 
   //this is making sure that no matter how fast someone is typing we only make one call based on the last change
 
@@ -35,22 +47,21 @@ const Home = () => {
 
   const handleSearch = (e) => {
     setLoading(true);
-    console.log("loading");
+
     clearTimeout(delayTimer);
     delayTimer = setTimeout(function () {
-      // Do the ajax stuff
       if (e.target.value === "") {
         fetchAllCountries().then((data) => {
           setCurrCountries(data.data);
           setLoading(false);
         });
+
         return;
       }
       fetchSearch(e.target.value).then((data) => {
         if (data === "no") {
           setCurrCountries(data);
           setLoading(false);
-
           return;
         }
         setCurrCountries(data.data);
@@ -106,6 +117,10 @@ const Home = () => {
             >
               Not found
             </h1>
+            <div className="card-wrap">
+              {/* {loading && <Loader />} */}
+              {/* <Paginate countries={currCountries} itemsPerPage={8} /> */}
+            </div>
           </div>
         </div>
       </div>
